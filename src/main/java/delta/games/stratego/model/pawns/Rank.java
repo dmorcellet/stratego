@@ -1,4 +1,4 @@
-package delta.games.stratego.model;
+package delta.games.stratego.model.pawns;
 
 /**
  * Rank.

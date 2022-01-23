@@ -1,11 +1,10 @@
 package delta.games.stratego.model;
 
 /**
- * Pawn location, relative to the lower/left corner of the board
- * for the owner player.
+ * Location.
  * @author DAM
  */
-public class PawnLocation
+public class Location
 {
   private int _x;
   private int _y;
@@ -15,7 +14,7 @@ public class PawnLocation
    * @param x X position.
    * @param y Y position.
    */
-  public PawnLocation(int x, int y)
+  public Location(int x, int y)
   {
     _x=x;
     _y=x;

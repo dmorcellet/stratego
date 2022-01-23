@@ -1,4 +1,7 @@
-package delta.games.stratego.model;
+package delta.games.stratego.model.pawns;
+
+import delta.games.stratego.model.Location;
+import delta.games.stratego.model.Side;
 
 /**
  * Pawn.
@@ -6,16 +9,19 @@ package delta.games.stratego.model;
  */
 public class Pawn
 {
-  private BoardSide _side;
+  private Side _side;
   private Rank _rank;
-  private PawnLocation _location;
+  /**
+   * Pawn location, relative to the lower/left corner of the board for the owner side.
+   */
+  private Location _location;
 
   /**
    * Constructor.
    * @param side Board side.
    * @param rank Rank.
    */
-  public Pawn(BoardSide side, Rank rank)
+  public Pawn(Side side, Rank rank)
   {
     _side=side;
     _rank=rank;
@@ -25,7 +31,7 @@ public class Pawn
    * Get the location of this pawn.
    * @return A location or <code>null</code>.
    */
-  public PawnLocation getLocation()
+  public Location getLocation()
   {
     return _location;
   }
@@ -34,7 +40,7 @@ public class Pawn
    * Set the location of this pawn.
    * @param location the location to set.
    */
-  public void setLocation(PawnLocation location)
+  public void setLocation(Location location)
   {
     _location=location;
   }
@@ -43,7 +49,7 @@ public class Pawn
    * Get the board side.
    * @return A side.
    */
-  public BoardSide getSide()
+  public Side getSide()
   {
     return _side;
   }

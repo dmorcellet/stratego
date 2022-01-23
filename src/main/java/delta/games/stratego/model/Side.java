@@ -1,10 +1,10 @@
 package delta.games.stratego.model;
 
 /**
- * Represents a side of the board.
+ * Represents a side/player.
  * @author DAM
  */
-public class BoardSide
+public class Side
 {
   private int _code;
   private String _name;
@@ -14,7 +14,7 @@ public class BoardSide
    * @param code Side code.
    * @param name Side name.
    */
-  public BoardSide(int code, String name)
+  public Side(int code, String name)
   {
     _code=code;
     _name=name;
