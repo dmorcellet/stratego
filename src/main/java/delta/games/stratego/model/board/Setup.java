@@ -29,4 +29,13 @@ public class Setup
   {
     _pawns.add(pawn);
   }
+
+  /**
+   * Get the managed pawns.
+   * @return A list of pawns.
+   */
+  public List<Pawn> getPawns()
+  {
+    return new ArrayList<Pawn>(_pawns);
+  }
 }

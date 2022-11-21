@@ -31,6 +31,7 @@ public class Board
         cells[i][j]=cell;
       }
     }
+    _cells=cells;
   }
 
   /**

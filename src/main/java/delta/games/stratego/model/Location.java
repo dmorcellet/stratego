@@ -17,7 +17,7 @@ public class Location
   public Location(int x, int y)
   {
     _x=x;
-    _y=x;
+    _y=y;
   }
 
   /**
