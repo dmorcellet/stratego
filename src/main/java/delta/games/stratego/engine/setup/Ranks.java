@@ -67,4 +67,21 @@ public class Ranks
    * All ranks.
    */
   public static final Rank[] RANKS={BOMB,MARSHAL,GENERAL,COLONEL,MAJOR,CAPTAIN,LIEUTENANT,SERGEANT,MINER,SCOUT,SPY,FLAG};
+
+  /**
+   * Get a rank by code.
+   * @param rankCode Rank code.
+   * @return A rank or <code>null</code> if not found.
+   */
+  public static Rank getRankByCode(int rankCode)
+  {
+    for(Rank rank : RANKS)
+    {
+      if (rank.getRank()==rankCode)
+      {
+        return rank;
+      }
+    }
+    return null;
+  }
 }
