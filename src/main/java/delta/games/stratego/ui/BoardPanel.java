@@ -22,6 +22,7 @@ public class BoardPanel extends JPanel
   private static final int CELL_WIDTH=80;
   private static final int CELL_HEIGHT=80;
   private Board _board;
+  private Dimension _size;
 
   /**
    * Constructor.
@@ -29,21 +30,25 @@ public class BoardPanel extends JPanel
    */
   public BoardPanel(Board board)
   {
+    super();
     _board=board;
+    _size=computeSize();
+    setPreferredSize(_size);
     setBackground(Color.WHITE);
-    initSize();
-    revalidate();
-    repaint();
   }
 
-  private void initSize()
+  /**
+   * Compute the size of the GUI panel.
+   * @return the size of the GUI panel.
+   */
+  private Dimension computeSize()
   {
     int cellsCountX=_board.getWidth();
     int totalWidth=cellsCountX*(CELL_WIDTH+LINE_WIDTH)+LINE_WIDTH;
     int cellsCountY=_board.getHeight();
     int totalHeight=cellsCountY*(CELL_HEIGHT+LINE_WIDTH)+LINE_WIDTH;
-    setSize(totalWidth,totalHeight);
-    setPreferredSize(new Dimension(totalWidth,totalHeight));
+    Dimension ret=new Dimension(totalWidth,totalHeight);
+    return ret;
   }
 
   /**
@@ -64,7 +69,7 @@ public class BoardPanel extends JPanel
     int cellsCountY=_board.getHeight();
     // Horizontal lines
     int y=0;
-    int maxX=getWidth();
+    int maxX=_size.width;
     for(int i=0;i<=cellsCountY;i++)
     {
       g.setColor(Color.YELLOW);
@@ -73,7 +78,7 @@ public class BoardPanel extends JPanel
     }
     // Vertical lines
     int x=0;
-    int maxY=getHeight();
+    int maxY=_size.height;
     for(int i=0;i<=cellsCountX;i++)
     {
       g.setColor(Color.YELLOW);
@@ -90,7 +95,7 @@ public class BoardPanel extends JPanel
     {
       for(int j=0;j<cellsCountY;j++)
       {
-        paintCell(getGraphics(),i,j);
+        paintCell(g,i,j);
       }
     }
   }
@@ -106,7 +111,7 @@ public class BoardPanel extends JPanel
     BoardCell cell=_board.getCellAt(cellX,cellY);
     boolean passable=cell.isPassable();
     int x=LINE_WIDTH+cellX*(LINE_WIDTH+CELL_WIDTH);
-    int height=getHeight();
+    int height=_size.height;
     int y=height-((cellY+1)*(LINE_WIDTH+CELL_HEIGHT));
     if (passable)
     {
@@ -123,11 +128,6 @@ public class BoardPanel extends JPanel
         String label=name+" ("+rankValue+")";
         g.setColor(color);
         g.drawString(label,x+10,y+20);
-      }
-      else
-      {
-        g.setColor(Color.GRAY);
-        g.fillRect(x,y,CELL_WIDTH,CELL_HEIGHT);
       }
     }
     else

@@ -1,7 +1,5 @@
 package delta.games.stratego.ui;
 
-import java.awt.BorderLayout;
-
 import javax.swing.JFrame;
 
 import delta.games.stratego.model.board.Board;
@@ -18,7 +16,7 @@ public class BoardPanelTest
     JFrame f=new JFrame();
     Board board=TestDataBuilder.buildBoard();
     BoardPanel panel=new BoardPanel(board);
-    f.getContentPane().add(panel,BorderLayout.CENTER);
+    f.add(panel);
     f.pack();
     f.setVisible(true);
   }
