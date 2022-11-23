@@ -128,6 +128,7 @@ public class MainFrameController implements ActionListener
     String cmd=e.getActionCommand();
     if (NEW_GAME_CMD.equals(cmd))
     {
+      // Nothing yet!
     }
     else if (QUIT_CMD.equals(cmd))
     {

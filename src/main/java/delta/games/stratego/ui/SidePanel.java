@@ -20,7 +20,6 @@ public class SidePanel extends JPanel
 
   /**
    * Constructor.
-   * @param game Game to show.
    */
   public SidePanel()
   {
