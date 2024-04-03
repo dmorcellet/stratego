@@ -8,6 +8,7 @@ import java.awt.Insets;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  * Panel that displays the game status (player name,...).
@@ -30,10 +31,11 @@ public class SidePanel extends JPanel
   private void buildGUI()
   {
     GridBagConstraints constraints;
-    int x=0,y=0;
+    int x=0;
+    int y=0;
     // Stratego main label
     {
-      JLabel gameNameLabel=new JLabel("Stratego",JLabel.CENTER);
+      JLabel gameNameLabel=new JLabel("Stratego",SwingConstants.CENTER);
       setLabelSize(gameNameLabel,72f);
       if (DEBUG)
       {
@@ -46,7 +48,7 @@ public class SidePanel extends JPanel
     y++;
     // Player name
     {
-      _playerName=new JLabel("Joe",JLabel.CENTER);
+      _playerName=new JLabel("Joe",SwingConstants.CENTER);
       setLabelSize(_playerName,36f);
       if (DEBUG)
       {
@@ -56,7 +58,15 @@ public class SidePanel extends JPanel
       constraints=new GridBagConstraints(x,y,1,1,1.0,0.0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,new Insets(5,5,5,5),0,0);
       add(_playerName,constraints);
     }
-    y++;
+  }
+
+  /**
+   * Set the player name.
+   * @param playerName Name to set.
+   */
+  public void setPLayerName(String playerName)
+  {
+    _playerName.setText(playerName);
   }
 
   private void setLabelSize(JLabel label, float size)

@@ -66,7 +66,7 @@ public class Ranks
   /**
    * All ranks.
    */
-  public static final Rank[] RANKS={BOMB,MARSHAL,GENERAL,COLONEL,MAJOR,CAPTAIN,LIEUTENANT,SERGEANT,MINER,SCOUT,SPY,FLAG};
+  protected static final Rank[] ALL_RANKS={BOMB,MARSHAL,GENERAL,COLONEL,MAJOR,CAPTAIN,LIEUTENANT,SERGEANT,MINER,SCOUT,SPY,FLAG};
 
   /**
    * Get a rank by code.
@@ -75,7 +75,7 @@ public class Ranks
    */
   public static Rank getRankByCode(int rankCode)
   {
-    for(Rank rank : RANKS)
+    for(Rank rank : ALL_RANKS)
     {
       if (rank.getRank()==rankCode)
       {

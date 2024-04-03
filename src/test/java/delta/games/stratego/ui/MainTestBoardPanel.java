@@ -1,6 +1,7 @@
 package delta.games.stratego.ui;
 
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 import delta.games.stratego.model.board.Board;
 import delta.games.stratego.utils.TestDataBuilder;
@@ -9,7 +10,7 @@ import delta.games.stratego.utils.TestDataBuilder;
  * Test class for the board panel.
  * @author DAM
  */
-public class BoardPanelTest
+public class MainTestBoardPanel
 {
   private void doIt()
   {
@@ -18,6 +19,7 @@ public class BoardPanelTest
     BoardPanel panel=new BoardPanel(board);
     f.add(panel);
     f.pack();
+    f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     f.setVisible(true);
   }
 
@@ -27,6 +29,6 @@ public class BoardPanelTest
    */
   public static void main(String[] args)
   {
-    new BoardPanelTest().doIt();
+    new MainTestBoardPanel().doIt();
   }
 }

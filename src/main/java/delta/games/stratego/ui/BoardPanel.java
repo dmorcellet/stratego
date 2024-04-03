@@ -6,6 +6,8 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import org.apache.log4j.Logger;
+
 import delta.games.stratego.model.Side;
 import delta.games.stratego.model.board.Board;
 import delta.games.stratego.model.board.BoardCell;
@@ -18,10 +20,12 @@ import delta.games.stratego.model.pawns.Rank;
  */
 public class BoardPanel extends JPanel
 {
+  private static final Logger LOGGER=Logger.getLogger(BoardPanel.class);
+
   private static final int LINE_WIDTH=5;
   private static final int CELL_WIDTH=80;
   private static final int CELL_HEIGHT=80;
-  private Board _board;
+  private transient Board _board;
   private Dimension _size;
 
   /**
@@ -118,7 +122,10 @@ public class BoardPanel extends JPanel
       Pawn pawn=cell.getCurrentPawn();
       if (pawn!=null)
       {
-        //System.out.println("Paint pawn: "+pawn+" at x="+x+", y="+y);
+        if (LOGGER.isDebugEnabled())
+        {
+          LOGGER.debug("Paint pawn: "+pawn+" at x="+x+", y="+y);
+        }
         Rank rank=pawn.getRank();
         Side side=pawn.getSide();
         int code=side.getCode();

@@ -23,7 +23,7 @@ public class DeckBuilder
   public static List<Pawn> buildPawns(Side side)
   {
     List<Pawn> ret=new ArrayList<Pawn>();
-    for(Rank rank : Ranks.RANKS)
+    for(Rank rank : Ranks.ALL_RANKS)
     {
       int count=COUNTS[rank.getRank()];
       for(int i=0;i<count;i++)

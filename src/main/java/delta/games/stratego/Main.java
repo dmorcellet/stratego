@@ -1,5 +1,7 @@
 package delta.games.stratego;
 
+import delta.games.stratego.ui.MainFrameController;
+
 /**
  * Entry point of the Stratego application.
  * @author DAM
@@ -12,6 +14,7 @@ public class Main
    */
   public static final void main(String[] args)
   {
-    // TODO
+    MainFrameController ctrl=new MainFrameController();
+    ctrl.show();
   }
 }

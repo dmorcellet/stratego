@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -14,15 +15,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+import delta.common.ui.swing.windows.DefaultWindowController;
 import delta.games.stratego.model.board.Board;
 
 /**
  * Controller for the Stratego main frame.
  * @author DAM
  */
-public class MainFrameController implements ActionListener
+public class MainFrameController extends DefaultWindowController implements ActionListener
 {
-  private JFrame _frame;
   private static final String NEW_GAME_CMD="NEW_GAME";
   private static final String QUIT_CMD="QUIT";
 
@@ -37,31 +38,25 @@ public class MainFrameController implements ActionListener
     // Nothing!
   }
 
-  /**
-   * Get the managed frame (build it if necessary).
-   * @return A frame.
-   */
-  public JFrame getFrame()
+  @Override
+  protected JFrame build()
   {
-    if (_frame==null)
-    {
-      _frame=buildFrame();
-    }
-    return _frame;
-  }
-
-  private JFrame buildFrame()
-  {
-    JFrame frame=new JFrame("Stratego");
-    JMenuBar menus=buildMenus();
-    frame.setJMenuBar(menus);
-    JPanel mainPanel=buildMainPanel();
-    frame.add(mainPanel);
+    JFrame frame=super.build();
+    frame.setTitle("Stratego");
+    // Default size
     frame.pack();
     return frame;
   }
 
-  private JMenuBar buildMenus()
+  @Override
+  protected JComponent buildContents()
+  {
+    JPanel mainPanel=buildMainPanel();
+    return mainPanel; 
+  }
+
+  @Override
+  protected JMenuBar buildMenuBar()
   {
     // Create the menu bar
     JMenuBar menuBar=new JMenuBar();
@@ -114,15 +109,6 @@ public class MainFrameController implements ActionListener
     return _boardPanel;
   }
 
-  /**
-   * Show the managed frame.
-   */
-  public void show()
-  {
-    JFrame frame=getFrame();
-    frame.setVisible(true);
-  }
-
   public void actionPerformed(ActionEvent e)
   {
     String cmd=e.getActionCommand();
@@ -138,7 +124,15 @@ public class MainFrameController implements ActionListener
 
   private void doQuit()
   {
-    System.exit(0);
+    dispose();
+  }
+
+  @Override
+  public void dispose()
+  {
+    super.dispose();
+    _boardPanel=null;
+    _sidePanel=null;
   }
 
   /**
